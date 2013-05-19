@@ -1,0 +1,2 @@
+#!/bin/bash
+python qap.py QAPproblems/$1 $3 > $2/${1/.dat/.out}
