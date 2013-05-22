@@ -3,7 +3,9 @@
 # My First QAP Solver
 # Reads a QAP file in format given here
 # http://www.seas.upenn.edu/qaplib/inst.html
-# and does stuff
+# and tries to find best permutation within given time limit
+#
+# Usage: qap.py [problem_definition_filename [max_time]]
 
 import sys
 
@@ -14,6 +16,7 @@ else: maxt=1800
 n=int(f.readline().strip())
 print "n =",n
 
+# Read in problem definition file
 i=0;m=[]
 for x in f:
   y=x.strip()
@@ -25,6 +28,7 @@ for x in f:
 assert i==2*n*n
 a=m[:n];b=m[n:]
 
+# Objective function
 def val(p):
   t=0
   for i in range(n):
@@ -32,6 +36,7 @@ def val(p):
       t+=a[i][j]*b[p[i]][p[j]]
   return t
 
+# Change in objective function due to a transposition
 def valtrans(p,i,j):
   t=0
   for k in range(n):
@@ -50,19 +55,19 @@ for i in range(n-1):
 N=len(l)
 for i in range(N-1): j=i+randrange(N-i);t=l[i];l[i]=l[j];l[j]=t
 while time.clock()<maxt:
-  p=[]
+  p=[]# Start with a random permutation
   for i in range(n): p.append(i)
   for i in range(n-1): j=i+randrange(n-i);t=p[i];p[i]=p[j];p[j]=t
   cv=val(p)
   r=0
-  while r<n*(n-1)/2:
+  while r<n*(n-1)/2:# Try transpositions until no more benefit
     for (i,j) in l:
       dv=valtrans(p,i,j)
       if dv<0: t=p[i];p[i]=p[j];p[j]=t;cv+=dv;r=0
       else: r+=1
   nn+=1
   if cv<bv: bv=cv
-  i=0
+  i=0# Record best nm results
   while i<len(mm) and cv>mm[i][0]: i+=1
   if i<len(mm):
     if cv==mm[i][0]: mm[i][1]+=1
