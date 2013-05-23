@@ -64,7 +64,9 @@ while time.clock()<maxt:
     for (i,j) in l:
       dv=valtrans(p,i,j)
       if dv<0: t=p[i];p[i]=p[j];p[j]=t;cv+=dv;r=0
-      else: r+=1
+      else:
+        r+=1
+        if r==n*(n-1)/2: break
   nn+=1
   if cv<bv: bv=cv
   i=0# Record best nm results
