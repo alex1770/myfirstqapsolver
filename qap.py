@@ -54,9 +54,9 @@ for i in range(n-1):
   for j in range(i+1,n): l.append((i,j))
 N=len(l)
 for i in range(N-1): j=i+randrange(N-i);t=l[i];l[i]=l[j];l[j]=t
+p=range(n)
 while time.clock()<maxt:
-  p=[]# Start with a random permutation
-  for i in range(n): p.append(i)
+  # Start with a random permutation
   for i in range(n-1): j=i+randrange(n-i);t=p[i];p[i]=p[j];p[j]=t
   cv=val(p)
   r=0
