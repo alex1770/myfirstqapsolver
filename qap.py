@@ -40,10 +40,9 @@ def val(p):
 def valtrans(p,i,j):
   t=0
   for k in range(n):
-    if k!=i and k!=j: t+=(a[k][i]-a[k][j])*(b[p[k]][p[j]]-b[p[k]][p[i]])+\
-          (a[i][k]-a[j][k])*(b[p[j]][p[k]]-b[p[i]][p[k]])
-  t+=(a[i][i]-a[j][j])*(b[p[j]][p[j]]-b[p[i]][p[i]])
-  t+=(a[i][j]-a[j][i])*(b[p[j]][p[i]]-b[p[i]][p[j]])
+    t+=(a[k][i]-a[k][j])*(b[p[k]][p[j]]-b[p[k]][p[i]])+\
+        (a[i][k]-a[j][k])*(b[p[j]][p[k]]-b[p[i]][p[k]])
+  t+=(a[i][i]+a[j][j]-a[i][j]-a[j][i])*(b[p[i]][p[i]]+b[p[j]][p[j]]-b[p[i]][p[j]]-b[p[j]][p[i]])
   return t
 
 import time
