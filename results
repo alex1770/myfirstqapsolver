@@ -35,6 +35,6 @@ tho40     40        240516 .       247236          247336>       243154<        
 wil50     50         48816 .        49164           49488>        49040<          48990<          48926<
 
 The "McGeoch" column is the best result (from Blackbox or Tabu) from the McGeoch-Wang paper.
-The '<', '=' and '>' signs are comparing the adjacent number with the McGeoch best result, so '<' means better.
+The '<', '=' and '>' signs are comparing the adjacent number with the Blackbox/Tabu best result, so '<' means better.
 
 These results were obtained on a 2.67GHz Intel i7-920.
